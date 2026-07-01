@@ -1,6 +1,6 @@
 // FB Widget v2
 (async()=>{
-const T="Zamanın kalabalığında, insanın kendi huzurunu aradığı bir dönemdeyiz. ‘İyilerle karşılaştırsın’ diye dua ediyorum, çünkü insanın en büyük nasibi güzel insanlardır. Kalbi güzel, niyeti temiz insanlarla yolumuzun kesişmesi dileğiyle.. Jij en 10 anderen";
+const T="Zamanın kalabalığında, insanın kendi huzurunu aradığı bir dönemdeyiz. ‘İyilerle karşılaştırsın’ diye dua ediyorum, çünkü insanın en büyük nasibi güzel insanlardır. Kalbi güzel, niyeti temiz insanlarla yolumuzun kesişmesi dileğiyle..";
 let w=new ListWidget(),g=new LinearGradient();
 g.locations=[0,1];g.colors=[new Color("#0f0f1a"),new Color("#1a1a3e")];
 w.backgroundGradient=g;w.setPadding(20,20,20,20);
