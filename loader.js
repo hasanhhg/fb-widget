@@ -5,7 +5,7 @@ try {
   await eval(code);
 } catch (e) {
   const w = new ListWidget();
-  const t = w.addText("⚠︎ FB widget offline");
+  const t = w.addText("\u26A0\uFE0E FB widget offline");
   t.textColor = Color.gray(); t.centerAlignText();
   if (config.runsInWidget) Script.setWidget(w); else w.presentMedium();
   Script.complete();

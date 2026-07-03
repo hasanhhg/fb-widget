@@ -1,73 +1,42 @@
 (async () => {
-  const POSTS = [{"text": "Ayak altında çatlama varsa sadece 3 malzeme 10 adet aspirin 2 adet limon 1 bardak zeytin yağı", "likes": 4}, {"text": "Allah’a Yönelen Hiçbir Dua Karşılıksız Değildir… Kalpten edilen her dua, Rabbimizin katında değerlidir. Kimi duası hemen kabul olur, kimi ise en hayırlı vakte bırakılır. Bu güzel zikri samimiyetle okuyup ardından gönlünüzden geçenleri Rabbimize emanet edebilirsiniz. ya rahman ya rahim Allah, edilen tüm duaları hayırlısıyla kabul eylesin.", "likes": 11}, {"text": "Elhamdülillâhi, Subhanallâhi, Lâ ilâhe illallâhü Vallâhü Ekber. Lâ havle ve lâ kuvvete illâ billâhil Aliyyil Azîm. Allah, samimiyetle yapılan duaları en güzel şekilde kabul buyursun. Hayırlı olanı nasip etsin, gönlünüzü huzurla doldursun. Âmin.", "likes": 12}, {"text": "TEVEKKÜL (Teslimiyet) insanın elinden geleni yaptıktan sonra, kontrol edemediği sonuçları Yaratıcı'nın takdirine ve adaletine bırakmasıdır. Bu tevekkül hali, belirsizlikler karşısında iç huzuru bulmayı, endişeden uzaklaşmayı ve kalben sükûnete ermeyi sağla", "likes": 10}];
-  const TH = {"bg_top": "#1a1a2e", "bg_bottom": "#16213e", "header_color": "#ffffff", "name_color": "#8ba4d4", "quote_color": "#ffffff", "quote_font_size": 15, "like_color": "#ff6b6b", "footer_color": "#8ba4d4", "icon_glyph": "ƒ", "show_likes": true, "header_opacity": 0.9, "name_opacity": 0.8, "time_color": "#8ba4d4", "divider_color": "#ffffff", "divider_opacity": 0.2, "padding": 16, "line_limit": 14, "show_time": true, "show_icon": true, "font_weight": "medium"};
-  const fam = config.widgetFamily || "medium";
-  const small = fam === "small", large = fam === "large";
+  const POSTS = [{"text": "Ayak altında çatlama varsa sadece 3 malzeme 10 adet aspirin 2 adet limon 1 bardak zeytin yağı", "likes": 4}, {"text": "Allah’a Yönelen Hiçbir Dua Karşılıksız Değildir… Kalpten edilen her dua, Rabbimizin katında değerlidir. Kimi duası hemen kabul olur, kimi ise en hayırlı vakte bırakılır. Bu güzel zikri samimiyetle okuyup ardından gönlünüzden geçenleri Rabbimize emanet edebilirsiniz. ya rahman ya rahim Allah, edilen tüm duaları hayırlısıyla kabul eylesin.", "likes": 11}, {"text": "Elhamdülillâhi, Subhanallâhi, Lâ ilâhe illallâhü Vallâhü Ekber. Lâ havle ve lâ kuvvete illâ billâhil Aliyyil Azîm. Allah, samimiyetle yapılan duaları en güzel şekilde kabul buyursun. Hayırlı olanı nasip etsin, gönlünüzü huzurla doldursun. Âmin.", "likes": 12}, {"text": "TEVEKKÜL (Teslimiyet) insanın elinden geleni yaptıktan sonra, kontrol edemediği sonuçları Yaratıcı'nın takdirine ve adaletine bırakmasıdır. Bu tevekkül hali, belirsizlikler karşısında iç huzuru bulmayı, endişeden uzaklaşmayı ve kalben sükûnete ermeyi sağla", "likes": 10}, {"text": "Kâbe'de bazen bir köşeye çekilip sessizce ağlayan, bazen secdeye kapanıp hıçkıra hıçkıra dua eden insanlara şahit olursunuz. Çünkü oraya gidenlerin çoğu sadece bir yolculuk yapmaya gelmez. Kimi affedilmeyi ister, kimi yıllardır dilinden düşmeyen duasını Rabbine arz eder. Kimi kalbinde taşıdığı yüklerle gelir, kimi yorgundur, kimi çaresizdir, kimi ise sadece Rabbine kavuşmanın hasretini yaşar.", "likes": 14}];
+  const TH = {"bg_top": "#1a1a2e", "bg_bottom": "#16213e", "quote_color": "#ffffff", "name_color": "#8ba4d4", "like_color": "#ff6b6b", "header_color": "#ffffff", "header_opacity": 0.9, "name_opacity": 0.8, "quote_font_size": 15, "time_color": "#8ba4d4", "footer_color": "#8ba4d4", "divider_color": "#ffffff", "divider_opacity": 0.2, "padding": 16, "line_limit": 14, "show_likes": true, "show_time": true, "show_icon": true, "icon_glyph": "ƒ", "font_weight": "medium"};
 
-  const w = new ListWidget();
-  const g = new LinearGradient();
-  g.locations = [0, 1];
-  g.colors = [new Color(TH.bg_top), new Color(TH.bg_bottom)];
-  w.backgroundGradient = g;
-  const pad = small ? 12 : 16;
-  w.setPadding(pad, pad + 2, pad, pad + 2);
-  w.refreshAfterDate = new Date(Date.now() + 30 * 60 * 1000);
-
-  const show = (msg) => {
-    const t = w.addText(msg); t.textColor = new Color(TH.name_color);
-    t.centerAlignText(); t.font = Font.mediumSystemFont(14);
-  };
-
-  if (!POSTS.length) {
-    show("…");
-    if (config.runsInWidget) Script.setWidget(w); else w.presentMedium();
-    Script.complete(); return;
+  if (config.runsInWidget) {
+    const fam = config.widgetFamily || "medium";
+    const small = fam === "small", large = fam === "large";
+    const w = new ListWidget();
+    const g = new LinearGradient();
+    g.locations = [0, 1];
+    g.colors = [new Color(TH.bg_top), new Color(TH.bg_bottom)];
+    w.backgroundGradient = g;
+    const pad = small ? 12 : 14;
+    w.setPadding(pad, pad + 2, pad, pad + 2);
+    w.refreshAfterDate = new Date(Date.now() + 30 * 60 * 1000);
+    if (POSTS.length) {
+      const idx = Math.floor(Date.now() / (30 * 60 * 1000)) % POSTS.length;
+      let text = (POSTS[idx].text || "").trim();
+      const cap = small ? 190 : (large ? 1000 : 460);
+      if (text.length > cap) text = text.slice(0, cap - 1).trimEnd() + "…";
+      const q = w.addText(text);
+      q.textColor = new Color(TH.quote_color);
+      q.font = Font.mediumSystemFont(small ? 12 : (large ? 18 : 14));
+      q.minimumScaleFactor = 0.45;
+      q.leftAlignText();
+      w.addSpacer(small ? 3 : 5);
+      const nm = w.addText("— Kadir Basan");
+      nm.font = Font.mediumSystemFont(small ? 9 : 10);
+      nm.textColor = new Color(TH.name_color);
+    } else {
+      const t = w.addText("…"); t.textColor = new Color(TH.name_color); t.centerAlignText();
+    }
+    Script.setWidget(w);
+    Script.complete();
+    return;
   }
 
-  // Rotate quote by time so it changes through the day
-  const idx = Math.floor(Date.now() / (30 * 60 * 1000)) % POSTS.length;
-  const post = POSTS[idx];
-  let text = (post.text || "").trim();
-
-  // Header: quote glyph + likes
-  const head = w.addStack();
-  head.centerAlignContent();
-  const icon = head.addText(TH.icon_glyph || "❝");
-  icon.font = Font.boldSystemFont(small ? 15 : 22);
-  icon.textColor = new Color(TH.header_color);
-  head.addSpacer();
-  if (TH.show_likes && post.likes > 0) {
-    const lk = head.addText("♥ " + post.likes);
-    lk.font = Font.mediumSystemFont(small ? 10 : 12);
-    lk.textColor = new Color(TH.like_color);
-  }
-  w.addSpacer(small ? 5 : 9);
-
-  // Body: truncate to a per-size cap, then let iOS auto-shrink to fit
-  const cap = small ? 150 : (large ? 750 : 340);
-  if (text.length > cap) text = text.slice(0, cap - 1).trimEnd() + "…";
-  const q = w.addText(text);
-  q.textColor = new Color(TH.quote_color);
-  const base = TH.quote_font_size || 15;
-  q.font = Font.mediumSystemFont(small ? Math.min(13, base) : (large ? base + 4 : base));
-  q.minimumScaleFactor = 0.55;
-  q.lineLimit = small ? 6 : (large ? 24 : 9);
-  q.leftAlignText();
-
-  w.addSpacer();
-
-  // Footer: attribution + position
-  const foot = w.addStack();
-  foot.centerAlignContent();
-  const nm = foot.addText("Kadir Basan");
-  nm.font = Font.mediumSystemFont(small ? 9 : 11);
-  nm.textColor = new Color(TH.name_color);
-  foot.addSpacer();
-  const ct = foot.addText((idx + 1) + "/" + POSTS.length);
-  ct.font = Font.systemFont(small ? 9 : 11);
-  ct.textColor = new Color(TH.footer_color);
-
-  if (config.runsInWidget) Script.setWidget(w);
-  else small ? w.presentSmall() : large ? w.presentLarge() : w.presentMedium();
+  const wv = new WebView();
+  await wv.loadHTML("<!DOCTYPE html><html><head><meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no\">\n<style>\n*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;-webkit-user-select:none}\nhtml,body{width:100%;height:100%;overflow:hidden;background:linear-gradient(160deg,#1a1a2e,#16213e);font-family:-apple-system,'Helvetica Neue',sans-serif}\n.track{display:flex;height:100%;transition:transform .3s cubic-bezier(.25,.46,.45,.94);will-change:transform}\n.slide{min-width:100%;height:100%;display:flex;flex-direction:column;justify-content:center;padding:70px 26px 96px}\n.q{color:#ffffff;font-size:20px;line-height:1.55;font-weight:400;overflow-y:auto;max-height:100%}\n.meta{position:fixed;bottom:40px;left:0;right:0;display:flex;align-items:center;justify-content:space-between;padding:0 26px}\n.name{color:#8ba4d4;font-size:13px;font-weight:500}\n.likes{color:#ff6b6b;font-size:13px;font-weight:500}\n.dots{position:fixed;top:28px;left:0;right:0;display:flex;justify-content:center;gap:6px;flex-wrap:wrap;padding:0 40px}\n.dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.22);transition:all .3s}\n.dot.on{background:#8ba4d4;width:16px;border-radius:3px}\n.hint{position:fixed;bottom:16px;left:0;right:0;text-align:center;color:rgba(255,255,255,.28);font-size:11px}\n</style></head><body>\n<div class=\"dots\" id=\"dots\"></div>\n<div class=\"track\" id=\"track\"></div>\n<div class=\"meta\"><span class=\"name\">Kadir Basan</span><span class=\"likes\" id=\"lk\"></span></div>\n<div class=\"hint\" id=\"hint\">&#8249; swipe &#8250;</div>\n<script>\nvar Q=[{\"text\": \"Ayak altında çatlama varsa sadece 3 malzeme 10 adet aspirin 2 adet limon 1 bardak zeytin yağı\", \"likes\": 4}, {\"text\": \"Allah’a Yönelen Hiçbir Dua Karşılıksız Değildir… Kalpten edilen her dua, Rabbimizin katında değerlidir. Kimi duası hemen kabul olur, kimi ise en hayırlı vakte bırakılır. Bu güzel zikri samimiyetle okuyup ardından gönlünüzden geçenleri Rabbimize emanet edebilirsiniz. ya rahman ya rahim Allah, edilen tüm duaları hayırlısıyla kabul eylesin.\", \"likes\": 11}, {\"text\": \"Elhamdülillâhi, Subhanallâhi, Lâ ilâhe illallâhü Vallâhü Ekber. Lâ havle ve lâ kuvvete illâ billâhil Aliyyil Azîm. Allah, samimiyetle yapılan duaları en güzel şekilde kabul buyursun. Hayırlı olanı nasip etsin, gönlünüzü huzurla doldursun. Âmin.\", \"likes\": 12}, {\"text\": \"TEVEKKÜL (Teslimiyet) insanın elinden geleni yaptıktan sonra, kontrol edemediği sonuçları Yaratıcı'nın takdirine ve adaletine bırakmasıdır. Bu tevekkül hali, belirsizlikler karşısında iç huzuru bulmayı, endişeden uzaklaşmayı ve kalben sükûnete ermeyi sağla\", \"likes\": 10}, {\"text\": \"Kâbe'de bazen bir köşeye çekilip sessizce ağlayan, bazen secdeye kapanıp hıçkıra hıçkıra dua eden insanlara şahit olursunuz. Çünkü oraya gidenlerin çoğu sadece bir yolculuk yapmaya gelmez. Kimi affedilmeyi ister, kimi yıllardır dilinden düşmeyen duasını Rabbine arz eder. Kimi kalbinde taşıdığı yüklerle gelir, kimi yorgundur, kimi çaresizdir, kimi ise sadece Rabbine kavuşmanın hasretini yaşar.\", \"likes\": 14}];\nvar track=document.getElementById('track'),dots=document.getElementById('dots'),lk=document.getElementById('lk'),hint=document.getElementById('hint');\nvar i=0;\nQ.forEach(function(p,j){\n  var s=document.createElement('div');s.className='slide';\n  var d=document.createElement('div');d.className='q';d.textContent=p.text;\n  s.appendChild(d);track.appendChild(s);\n  var dt=document.createElement('div');dt.className='dot';dots.appendChild(dt);\n});\nfunction go(n){\n  i=Math.max(0,Math.min(n,Q.length-1));\n  track.style.transform='translateX(-'+(i*100)+'%)';\n  var ds=dots.children;for(var j=0;j<ds.length;j++){ds[j].className='dot'+(j===i?' on':'');}\n  lk.textContent=Q[i].likes>0?('♥ '+Q[i].likes):'';\n  if(i>0&&hint){hint.style.display='none';}\n}\ngo(0);\nvar sx=0,sw=false;\ndocument.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;sw=true},{passive:true});\ndocument.addEventListener('touchend',function(e){if(!sw)return;sw=false;var dx=sx-e.changedTouches[0].clientX;if(Math.abs(dx)>45)go(dx>0?i+1:i-1)},{passive:true});\n</script></body></html>");
+  await wv.present(true);
   Script.complete();
 })();
